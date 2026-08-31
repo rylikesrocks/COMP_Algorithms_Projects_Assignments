@@ -16,7 +16,7 @@ public class Exercise07_01_Braithwaite{
 
 
             for(int i = 0; i < studentN; i++){
-                System.out.println("Please input grade for student " + i + " (grade should be x/100):");
+                System.out.println("Please input grade for student " + i + " (grade should be 100 to 0):");
                 grade = gInput.nextInt();
                 gradeInput.add(grade);
         }
