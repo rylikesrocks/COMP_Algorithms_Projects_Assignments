@@ -3,17 +3,22 @@ import java.util.ArrayList;
 
 public class Exercise07_01_Braithwaite{
 
+    //Declaration of global variables & arraylists
+
     static ArrayList<Integer> gradeInput = new ArrayList<>();
     static ArrayList<String> letterGrades = new ArrayList<>();
     static int highestGrade = 0;
+
+    //Class input method to take # of students from the user
 
     public static void classInput(){
         java.util.Scanner input = new java.util.Scanner(System.in);
         java.util.Scanner gInput = new java.util.Scanner(System.in);
         int grade;
         System.out.println("How many students are in your class?");
-        int studentN = input.nextInt();
+        int studentN = input.nextInt();      
 
+     //Getting grades for each student in the class and adding them to the gradeInput ArrayList
 
             for(int i = 0; i < studentN; i++){
                 System.out.println("Please input grade for student " + i + " (grade should be 100 to 0):");
@@ -22,13 +27,19 @@ public class Exercise07_01_Braithwaite{
         }
     }
 
+    //Grade Analysis Method to determine the highest grade and assign letter grades to each student
+
     public static void gradeAnalysis(){
         for (int i = 0; i < gradeInput.size(); i++){
             if (highestGrade < (gradeInput.get(i))){
                 highestGrade = gradeInput.get(i);
             }
         }
+
         System.out.println("Highest grade is:" + " " + highestGrade + "\n");
+
+    //Calculating the letter grades based on the highest grade and adding them to the letterGrades ArrayList
+
         int isA = highestGrade - 10;
         int isB = highestGrade - 20;
         int isC = highestGrade - 30;
@@ -46,10 +57,13 @@ public class Exercise07_01_Braithwaite{
                 letterGrades.add("F");
             }
 
+    //Outputting the results for each student with their score and letter grade
+
             System.out.println("Student: " + i + " Score: " + gradeInput.get(i) + " Letter Grade: " + letterGrades.get(i));
         }
     }
 
+    //Main Method to call the classInput and gradeAnalysis methods
 public static void main(String[] args) {
         classInput();
         gradeAnalysis();
