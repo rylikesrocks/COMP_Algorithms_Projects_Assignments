@@ -18,9 +18,9 @@ Next, as long as i !> the size of array x, it will continue to run, otherwise th
 stops. Finally, to make sure the program doesn runaway, i has to increase through i++.
 
 The methods that use this loop and for(variable x : list) are linear because they depen-
-d on thesize of the array, integer, or value. If x.size() = 1, then i would only need to
+d on the size of the array, integer, or value. If x.size() = 1, then i would only need to
 iterate through the array once. However, if x.size() = 999, then i would need to iterate
-through the array 999 times if id didn't find a value. This also extends the runtime of
+through the array 999 times if it didn't find a value. This also extends the runtime of
 the program.
 
 Search students by name:
