@@ -5,24 +5,24 @@ public class Exercise07_01_Braithwaite{
 
     //Declaration of global variables & arraylists
 
-    static ArrayList<Integer> gradeInput = new ArrayList<>();
+    static ArrayList<Double> gradeInput = new ArrayList<>();
     static ArrayList<String> letterGrades = new ArrayList<>();
-    static int highestGrade = 0;
+    static double highestGrade = 0;
 
     //Class input method to take # of students from the user
 
     public static void classInput(){
         java.util.Scanner input = new java.util.Scanner(System.in);
         java.util.Scanner gInput = new java.util.Scanner(System.in);
-        int grade;
+        double grade;
         System.out.println("How many students are in your class?");
         int studentN = input.nextInt();      
 
      //Getting grades for each student in the class and adding them to the gradeInput ArrayList
 
             for(int i = 0; i < studentN; i++){
-                System.out.println("Please input grade for student " + i + " (grade should be 100 to 0):");
-                grade = gInput.nextInt();
+                System.out.println("Please input grade for student " + (i + 1) + " (grade should be 100 to 0):");
+                grade = gInput.nextDouble();
                 gradeInput.add(grade);
         }
     }
@@ -40,10 +40,10 @@ public class Exercise07_01_Braithwaite{
 
     //Calculating the letter grades based on the highest grade and adding them to the letterGrades ArrayList
 
-        int isA = highestGrade - 10;
-        int isB = highestGrade - 20;
-        int isC = highestGrade - 30;
-        int isD = highestGrade - 40;
+        double isA = highestGrade - 10;
+        double isB = highestGrade - 20;
+        double isC = highestGrade - 30;
+        double isD = highestGrade - 40;
         for (int i = 0; i < gradeInput.size(); i++){
             if(gradeInput.get(i) >= isA){
                 letterGrades.add("A");
@@ -59,7 +59,7 @@ public class Exercise07_01_Braithwaite{
 
     //Outputting the results for each student with their score and letter grade
 
-            System.out.println("Student: " + i + " Score: " + gradeInput.get(i) + " Letter Grade: " + letterGrades.get(i));
+            System.out.println("Student: " + (i + 1) + " Score: " + gradeInput.get(i) + " Letter Grade: " + letterGrades.get(i));
         }
     }
 
