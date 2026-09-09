@@ -129,7 +129,7 @@ public class Project2_Braithwaite {
 
     }
 }
-//Credit for help with Aggregation Setup: https://www.youtube.com/watch?v=6MYaUdSuW24
+//Credit for help with Composition Setup: https://www.youtube.com/watch?v=6MYaUdSuW24
 //Credit for help with understanding override hashCode and equals: https://www.geeksforgeeks.org/java/equals-hashcode-methods-java/
 //Used integrated Claude (on the right) for help with debugging and explaining behind logic iterating through findByTitle, BookName, and removeBook.
 
