@@ -32,7 +32,7 @@ public class Exercise10_01_Braithwaite {
         MyTime aMilliTime = new Exercise10_01_Braithwaite().new MyTime();
         System.out.println("The current time in milliseconds is: " + aMilliTime.elapsed);
         MyTime hourMinSec = new Exercise10_01_Braithwaite().new MyTime(5, 23, 55);
-        System.out.println("The time is: " + hourMinSec.hour + ":" + hourMinSec.minute + ":" + hourMinSec.second);
+        System.out.println("The time is: " + hourMinSec.getHour() + ":" + hourMinSec.getMinute() + ":" + hourMinSec.getSecond());
         MyTime timeElapsed = new Exercise10_01_Braithwaite().new MyTime(System.currentTimeMillis());
         System.out.println("The elapsed time is: " + timeElapsed.hour + ":" + timeElapsed.minute + ":" + timeElapsed.second);
     }
