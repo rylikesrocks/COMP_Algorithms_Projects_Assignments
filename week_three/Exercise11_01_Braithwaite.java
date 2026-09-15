@@ -1,6 +1,6 @@
 
 
-public class Project3_Braithwaite {
+public class Exercise11_01_Braithwaite {
 //Parent Class declaration to extend the child classes;
     static class GeometricObject{
         String color;
