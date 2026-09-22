@@ -171,6 +171,8 @@ public class Project4_Braithwaite {
         shapeList.add(circle2);
         shapeList.add(triangle1);
         shapeList.add(triangle2);
+
+        System.out.println("Sorting Demonstration:\n");
 //Before Sorting
         System.out.println(shapeList);
 //After Sorting
@@ -179,6 +181,8 @@ public class Project4_Braithwaite {
 //Sorting based on Perimeter
         Collections.sort(shapeList, Comparator.comparing(Shape::perimeter));
         System.out.println(shapeList);
+
+        System.out.println("\nIndex Taxable Check:\n");
 
         for(int i = 0; i < shapeList.size(); i++){
             System.out.println("Index " + i + " Taxable? ");
