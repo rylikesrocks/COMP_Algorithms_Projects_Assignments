@@ -1,3 +1,12 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+
+//Part A program starts
 
 class StackOverflowException extends RuntimeException{
     public StackOverflowException(String message){
@@ -26,41 +35,41 @@ class BoundedStack<T>{
         this.array = (T[]) new Object[capacity];
         this.peak = -1;
     }
-
-    public void push(T element){
-        try{
+//Included comment code in case try catch block was needed here, wasn't sure if error needed to be handled in part A. Uncomment if handling was intended.
+    public void push(T element) throws StackOverflowException{
+        //try{
         if ((peak + 1) >= capacity){
             throw new StackOverflowException("Error: Stack Overflow in BoundedStack -- Requested input, " + (peak + 2) + " exceeds existing capacity of " + (peak + 1) + " with a maximum of " + capacity);
         }
             array[++peak] = element;
-        }catch (StackOverflowException er){
-            System.out.println(er);
-            System.exit(1);
-        }
+        //}catch (StackOverflowException er){
+            //System.out.println(er);
+            //System.exit(1);
+        //}
     }
-
-    public void pop(){
-        try {
+//Same down here, wasn't sure for pop() or peek()
+    public void pop() throws StackUnderflowException{
+        //try {
             if((peak + 1) == 0){
                 throw new StackUnderflowException("Error: Attempt to remove top of BoundedStack while current stack items is at " + (peak + 1) + ". Maximum capacity is " + capacity);
             }
-        } catch (StackUnderflowException er) {
-            System.out.println(er);
-            System.exit(1);
-        }
+        //} catch (StackUnderflowException er) {
+            //System.out.println(er);
+           // System.exit(1);
+        //}
         array[peak] = null;
         peak--;
     }
 
-    public T peek(){
-        try {
+    public T peek() throws StackUnderflowException{
+        //try {
             if ((peak + 1) == 0){
                 throw new StackUnderflowException("Error: Attempting to view a stack list, BoundedStack, that is null. Stack items: " + (peak + 1) + " Maximum capacity: " + capacity);
             }
-        } catch (StackUnderflowException er) {
-            System.out.println(er);
-            System.exit(1);
-        }
+        //} catch (StackUnderflowException er) {
+            //System.out.println(er);
+            //System.exit(1);
+        //}
         return array[peak];
     }
 
@@ -89,17 +98,65 @@ class BoundedStack<T>{
     }
 }
 
-public class Project5_Braithwaite {
-    public static void main(String[] args) {
-        BoundedStack<Integer> stack = new BoundedStack<>(1);
-        stack.push(10);
-        stack.push(10);
-        System.out.println(stack);
-        System.out.println(stack.size());
+//Part B Code Starts
+
+class SafeFileReader{
+    
+    
+    File samples = new File("sample.txt");
+    public ArrayList<String> readData = new ArrayList<>();
+
+    public void ReadFile(){
+        int linesRead = 0;
+        try (BufferedReader input = new BufferedReader(new FileReader(samples))){
+            String var;
+            while ((var = input.readLine()) != null){
+                linesRead++;
+                readData.add(var);
+                if ((var = input.readLine()) == null){
+                    break;
+                } else {
+                    linesRead++;
+                    readData.add(var);
+                }
+            }
+            System.out.println(readData);
+        }catch(FileNotFoundException er){
+            System.out.println("Error: File " + samples + " not found in working directory");
+        }catch(IOException er){
+            System.out.println("Error: an Input or Output operation has failed!");
+        } finally {
+            System.out.println("Lines Read: " + linesRead);
+        }
     }
 }
 
-//Claude used for debugging explanations, prompt(s): why am I getting an arrayindex exception instead of my predefined stack overflow, just explain no solution code
+//Testing Code
+public class Project5_Braithwaite {
+    public static void main(String[] args) {
+
+//Part A Testing
+
+        BoundedStack<Integer> stack = new BoundedStack<>(1);
+        BoundedStack<Integer> stackTwo = new BoundedStack<>(0);
+
+        stack.push(10);
+//      stack.push(2);
+//      stackTwo.peek();
+//      stackTwo.pop();
+        System.out.println(stack);
+        System.out.println(stack.size());
+        System.out.println(stack.capacity());
+
+//Part B Testing
+
+        SafeFileReader file = new SafeFileReader();
+        file.ReadFile();
+
+    }
+}
+
+//Claude used for debugging explanations, prompt(s): why am I getting an arrayindex exception instead of my predefined stack overflow, just explain no solution code : explain logic error for line 112, why is it adding null at the end of the array? no solution code
 
 //Used https://www.geeksforgeeks.org/dsa/implement-stack-using-array/ and https://www.baeldung.com/java-warning-unchecked-cast for help understanding the data structure of stacks and array implementation, as well as unchecked casting.
 
