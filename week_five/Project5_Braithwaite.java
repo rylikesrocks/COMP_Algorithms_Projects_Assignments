@@ -102,7 +102,6 @@ class BoundedStack<T>{
 
 class SafeFileReader{
     
-    
     File samples = new File("sample.txt");
     public ArrayList<String> readData = new ArrayList<>();
 
