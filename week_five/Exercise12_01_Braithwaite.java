@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Exercise14_01_Braithwaite {
+public class Exercise12_01_Braithwaite {
    public static void main(String[] args) {
        Scanner input = new Scanner(System.in);
        System.out.println("Enter number for Operand 1 (Integer): ");
