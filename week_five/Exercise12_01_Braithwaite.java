@@ -1,11 +1,13 @@
 import java.util.Scanner;
 
 public class Exercise12_01_Braithwaite {
+
    public static void main(String[] args) {
        Scanner input = new Scanner(System.in);
        System.out.println("Enter number for Operand 1 (Integer): ");
        int operandOne = 0;
        String nextLine = input.next();
+       //Operand 1 Input + error handling
        try {
         operandOne = Integer.parseInt(nextLine);
        } catch (IllegalArgumentException exOne) {
@@ -15,6 +17,7 @@ public class Exercise12_01_Braithwaite {
             System.out.println("Error! Amount exceeds Integer limits!");
             System.exit(1);
        }
+       //Operand 2 Input + error handling
        System.out.println("Enter number for Operand 2 (Integer): ");
        int operandTwo = 0;
        String afterLine = input.next();
@@ -27,9 +30,10 @@ public class Exercise12_01_Braithwaite {
             System.out.println("Error! Amount exceeds Integer bounds!");
             System.exit(1);
        }
+       //Operator Input + calculation with a switch statement
        System.out.println("Enter operator for the two operands: ");
        String operator = input.next();
-       int totalOrSum = 0;
+       int totalOrSum;
        switch (operator){
         case "+":
             totalOrSum = operandOne + operandTwo;
@@ -53,6 +57,7 @@ public class Exercise12_01_Braithwaite {
                 System.exit(1);
             }
             break;
+            //Default case for unknown operator input
         default:
             if (!operator.equals("+") || !operator.equals("-") || !operator.equals("*") || !operator.equals("/")){
                 System.out.println("Error! Unknown operator entered!");
