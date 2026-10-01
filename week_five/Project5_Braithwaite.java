@@ -102,7 +102,7 @@ class BoundedStack<T>{
 
 class SafeFileReader{
     
-    File samples = new File("sample.txt");
+    File samples = new File("sample.txt"/*"smple.txt"*/); 
     public ArrayList<String> readData = new ArrayList<>();
 
     public void ReadFile(){
@@ -162,6 +162,6 @@ public class Project5_Braithwaite {
 /*
 Analysis:
 The reason we use RuntimeException for an extension instead is because we want our declared exceptions to be associated with actual runtime exceptions such as IO, Index, etc.
-Another reason could be that we don't want our custom exceptions to be checked, or forcefully caught by the compiler outside of declaration for the methods we originally structured the exceptions for.
-In other words, the custom exceptions were built exclusively for push(), pop(), and peek(), not for the entire environment.
+Another reason could be that we don't want our custom exceptions to be checked, or forcefully caught by the compiler outside of declaration for the methods we originally structured the exceptions for, due to the fact that they don't need to always be caught/declared.
+In other words, the custom exceptions were built exclusively for push(), pop(), and peek(), not for the entire environment, and not to be always caught.
 */
