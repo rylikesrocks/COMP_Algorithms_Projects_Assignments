@@ -164,4 +164,6 @@ Analysis:
 The reason we use RuntimeException for an extension instead is because we want our declared exceptions to be associated with actual runtime exceptions such as IO, Index, etc.
 Another reason could be that we don't want our custom exceptions to be checked, or forcefully caught by the compiler outside of declaration for the methods we originally structured the exceptions for, due to the fact that they don't need to always be caught/declared.
 In other words, the custom exceptions were built exclusively for push(), pop(), and peek(), not for the entire environment, and not to be always caught.
+
+If an exception is thrown inside the try-with-resources block, the block will automatically close and the resources will automatically close with it. That way, resources aren't stuck open, and nothing is overwritten.
 */
