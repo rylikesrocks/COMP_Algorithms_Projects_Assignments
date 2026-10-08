@@ -1,6 +1,9 @@
 import java.math.BigInteger;
 
 public class Exercise18_01_Braithwaite {
+
+//Recursion method
+
     public static BigInteger factorial(BigInteger n) {
         if(n.equals(BigInteger.ZERO)){
             return BigInteger.ONE;
@@ -8,6 +11,9 @@ public class Exercise18_01_Braithwaite {
             return n.multiply(factorial(n.subtract(BigInteger.ONE)));
         }
     }
+
+//Testing
+
     public static void main(String[] args) {
         BigInteger newBig = new BigInteger("25");
         BigInteger newBigTwo = new BigInteger("50");
