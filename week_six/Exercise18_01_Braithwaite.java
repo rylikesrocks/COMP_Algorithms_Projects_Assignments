@@ -22,8 +22,8 @@ public class Exercise18_01_Braithwaite {
 
 //Uncomment to test recursion! (probably not all 4 at the same time, unless you like big numbers!)
 
-        System.out.println(factorial(newBig));
-        //System.out.println(factorial(newBigTwo));
+        //System.out.println(factorial(newBig));
+        System.out.println(factorial(newBigTwo));
         //System.out.println(factorial(newBigPrettyBig));
         //System.out.println(factorial(newBigReallyBig));
 
