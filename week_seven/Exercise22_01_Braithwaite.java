@@ -37,7 +37,7 @@ This is relatively inefficient, as the amount of runs keeps growing exponentiall
 
 
 My idea was to create a basic for loop and have it loop through the string, then compare the (i) characxter to the (i-1) character, adding it to a longestSequence if i was greater.
-Pretty similar to the nested for loop in this example, but the main loop would handle iteration through abcdefg, and various conditionaly statements inside the for loop would handle the sorting.
+Pretty similar to the nested for loop in this example, but the main loop would handle iteration through abcdefg, and various conditional statements inside the for loop would handle the sorting.
 Basically, just remove the nested for loop and build logic in the form of conditional statements to make it more linear.
 
 */
