@@ -1,10 +1,15 @@
 import java.util.Arrays;
 
 public class Exercise19_01_Braithwaite {
+
+//Generic class declaration
+
     public static class GenericStack<E>{
         private E[] backingArray;
         int currentSize;
         int currentTop;
+
+//Constructors
 
         @SuppressWarnings ("unchecked")
         public GenericStack(){
@@ -13,6 +18,8 @@ public class Exercise19_01_Braithwaite {
             this.currentTop = -1;
         }
 
+//Push method adjusting the stack size if it reached the limit.
+
         public void push(E value){
             if(currentSize == (backingArray.length)){
                 adjust();
@@ -20,6 +27,8 @@ public class Exercise19_01_Braithwaite {
             backingArray[++currentTop] = value;
             currentSize++;
         }
+
+//Pop function returning popped value
 
         public E pop(){
             if(currentSize == 0){
@@ -33,12 +42,16 @@ public class Exercise19_01_Braithwaite {
             return poppedVal;
         }
 
+//Peek value returning the current Top value
+
         public E peek(){
             if(currentSize == 0){
                 throw new IndexOutOfBoundsException("Error: peek() attempt on an empty stack.");
             }
             return backingArray[currentTop];
         }
+
+//Is Empty returning true if stack is empty, false otherwise.
 
         public boolean isEmpty(){
             if(currentSize == 0){
@@ -51,6 +64,8 @@ public class Exercise19_01_Braithwaite {
         public Integer getSize(){
             return backingArray.length;
         }
+
+//Adjust method that lookes at the current length of the array, makes a copy of it, makes an adjusted length, then applies the backing array with oldValue and adjusted size.
 
         @SuppressWarnings ("unchecked")
         public void adjust(){
