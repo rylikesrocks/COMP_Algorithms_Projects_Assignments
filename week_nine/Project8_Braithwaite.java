@@ -116,7 +116,7 @@ public class Project8_Braithwaite {
 
 /*
 1. For this one, I would choose a stack due to the sheer number of users at a time, and the powerful search() method to look for a currently logged in user.
-2. For number two, the most important performance characteristic is adding flexibility, not search time. I would choose a Deque or LinkedList for this one because it has that addLast, removeLast, etc. flexibility. 
+2. For number two, the most important performance characteristic is adding flexibility, not search time. I would choose a Deque or LinkedList for this one because it has that addLast, removeLast, etc.
 3. For number three I would choose a List or ArrayList for this structure. Iterating by ID order can be a very linear process and makes opportunity for both Binary and Linear searech. Retrieving elements is very easy with Array.get(index).
 4. For number 4 I would select a Hash collection, most likely a HashSet. This is because ordering is not important, and the most important performance aspect is lookup by O(1).
 
