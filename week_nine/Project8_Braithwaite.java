@@ -18,8 +18,10 @@ public class Project8_Braithwaite {
             Scanner input = new Scanner(file);
             while(input.hasNext()){
                 String temp = input.next();
-                if(!temp.isEmpty() && Character.isLetter(temp.charAt(0))){
-                    map.put(temp, map.getOrDefault(temp, 0) + 1);
+                String standard = temp.toLowerCase();
+                String regWord = standard.replaceAll("\\p{P}", "");
+                if(!regWord.isEmpty() && Character.isLetter(regWord.charAt(0))){
+                    map.put(regWord, map.getOrDefault(regWord, 0) + 1);
                 }
             }
             for(String key : map.keySet()){
@@ -31,11 +33,17 @@ public class Project8_Braithwaite {
                 }
             }
 
-            List<Map.Entry<String, Integer>> topTen = new ArrayList<>(map.entrySet());
+            List<Map.Entry<String, Integer>> sortWord = new ArrayList<>(map.entrySet());
             Comparator<Map.Entry<String, Integer>> orderFrequency = Comparator.comparing(Map.Entry<String, Integer>::getValue).reversed();
+            List<String> topTen = new ArrayList<>();
 
-            topTen.sort(orderFrequency);
-            System.out.println("\nList Sorted by Frequency: " + topTen);
+            int count = 0;
+            sortWord.sort(orderFrequency);
+            while(count < 10 && count < sortWord.size()){
+                topTen.add(sortWord.get(count).getKey());
+                count++;
+            }
+            System.out.println("\nList of Top Ten: " + topTen);
             System.out.println("\nAlphabetically Sorted List: " + tree);
             System.out.println("\nWords that only appear Once: " + onlyOnce);
             
@@ -59,7 +67,6 @@ public class Project8_Braithwaite {
             sortThenSearch.add(list[i]);
         }
 
-        HashSet<Integer> hashSorted = new HashSet<>();
         HashSet<Integer> hashSort = new HashSet<>(listSorted);
         System.out.println("List of unique ids: " + hashSort);
         TreeSet<Integer> treeSort = new TreeSet<>(listSorted);
@@ -69,6 +76,7 @@ public class Project8_Braithwaite {
         List<Integer> duplicateTwo = new ArrayList<>();
 
         start = System.nanoTime();
+        HashSet<Integer> hashSorted = new HashSet<>();
         for(Integer in : listSorted){
             if(hashSorted.add(in)){
             }else{
@@ -76,7 +84,7 @@ public class Project8_Braithwaite {
             }
         }
         end = System.nanoTime();
-        System.out.println("End: " + (end - start));
+        System.out.println("HashSet Time: " + (end - start) + "ns");
 
         start = System.nanoTime();
         sortThenSearch.sort(null);
@@ -86,28 +94,32 @@ public class Project8_Braithwaite {
             }
         }
         end = System.nanoTime();
-        System.out.println("End: " + (end - start));
+        System.out.println("Sort Search Time: " + (end - start) + "ns");
 
 
         List<Integer> duplicateThree = new ArrayList<>();
 
         start = System.nanoTime();
         for(int j = 0; j < listSorted.size() - 1; j++){
-            int dupe = j;
             for(int i = j + 1; i < list.length; i++){
-                if(listSorted.get(i).equals(listSorted.get(dupe))){
+                if(listSorted.get(i).equals(listSorted.get(j))){
                     duplicateThree.add(listSorted.get(i));
                 }
             }
         }
         end = System.nanoTime();
-        System.out.println("End: " + (end - start));
+        System.out.println("Nested Loop Time: " + (end - start) + "ns");
     }
 
     public static void main(String[] args) {
         int[] test = new Random().ints(50, 1, 28).toArray();
-        idReaderTime(test);
+        System.out.println("Unordered List: ");
+        for(int i=0; i < test.length; i++){
+            System.out.print(test[i] + " ");
+        }
+        System.out.println(" ");
         frequencyCounter();
+        idReaderTime(test);
     }
 
 }
