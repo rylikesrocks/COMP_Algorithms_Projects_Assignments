@@ -132,6 +132,6 @@ public class Project8_Braithwaite {
 3. For number three I would choose a List or ArrayList for this structure. Iterating by ID order can be a very linear process and makes opportunity for both Binary and Linear searech. Retrieving elements is very easy with Array.get(index).
 4. For number 4 I would select a Hash collection, most likely a HashSet. This is because ordering is not important, and the most important performance aspect is lookup by O(1).
 
-Credit to Claude for helping me with some logic errors, and figuring out syntax.
+Credit to Claude for helping me with some logic errors, and figuring out syntax. Additional credit to https://www.geeksforgeeks.org/dsa/removing-punctuations-given-string/
 
 */
