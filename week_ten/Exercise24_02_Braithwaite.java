@@ -10,6 +10,9 @@ public class Exercise24_02_Braithwaite {
     }
 
     public static class MyLinkedList<E>{
+
+//Constructors & Node initiators
+
         Node<E> head = null;
         Node<E> tail = null;
 
@@ -21,6 +24,8 @@ public class Exercise24_02_Braithwaite {
                 tail = add_node;
             }
         }
+    
+//Check if an item is within the list
 
         public boolean contains(Object o){
             Node<E> theNode = head;
@@ -32,6 +37,8 @@ public class Exercise24_02_Braithwaite {
             }
             return false;
         }
+
+// Get a item at a specified index
 
         public E get(int index){
             Node<E> theNode = head;
@@ -52,6 +59,8 @@ public class Exercise24_02_Braithwaite {
             }
         }
 
+// Check the index of an item
+
         public int indexOf(Object o){
             Node<E> theNode = head;
             int count = 0;
@@ -64,6 +73,8 @@ public class Exercise24_02_Braithwaite {
             }
             return -1;
         }
+
+// Find the last index of a value
 
         public int lastIndexOf(Object o){
             Node<E> theNode = head;
@@ -78,6 +89,8 @@ public class Exercise24_02_Braithwaite {
             }
             return index;
         }
+
+// Set a known index equal to something else
 
         public void set(int index, E e){
             Node<E> theNode = head;
@@ -96,6 +109,8 @@ public class Exercise24_02_Braithwaite {
             }
         }
 
+//To String Override
+
         @Override
         public String toString(){
             Node<E> theNode = head;
@@ -107,6 +122,8 @@ public class Exercise24_02_Braithwaite {
             return "--End of List--";
         }
     }
+    
+//Testing
 
     public static void main(String[] args) {
         MyLinkedList<String> testList = new MyLinkedList<>();
