@@ -176,6 +176,9 @@ public class Project9_Braithwaite {
         }
 
         public void reverse(){
+            if(size < 2){
+                throw new IndexOutOfBoundsException("Error: size of LinkedList is less than 2! Cannot reverse one item!");
+            }
             int counter = 0;
             Node<E> sent = head.next;
             while(counter != size){
