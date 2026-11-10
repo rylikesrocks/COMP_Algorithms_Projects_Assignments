@@ -72,7 +72,7 @@ public class Exercise24_04_Braithwaite {
 
         //The reason that the found numbers are printed in descending order rather than ascending is stack follows the LIFO principle.
         //Pop() removes the top element of the stack, so in this case it would be the highest number, then works its way down the stack.
-        //Push() on the other had adds to the top of the stack, hence why the order is ascending when printing Push().
+        //Push() on the other hand adds to the top of the stack, hence why the order is ascending when printing Push().
         //Its basically just like counting up, then switching and counting down for the two methods.
     }
 }
