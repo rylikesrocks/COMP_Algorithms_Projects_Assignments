@@ -238,18 +238,20 @@ public class Capstone_Braithwaite {
     public class BoundedHistoryStack<T>{
         private T[] history;
         private int top;
+        private final int cap;
 
         @SuppressWarnings("unchecked")
         public BoundedHistoryStack(int size){
             this.history = (T[]) new Object[size];
             top = -1;
+            cap = size;
         }
 
         public void push(T value){
             try{
                 history[++top] = value;
             }catch(HistoryFullException e){
-                System.out.println("Exception: Attempting to add to a stack that has reached maximum capacity: " + e.getMessage());
+                System.out.println("Exception: Attempting to add to a stack that has reached maximum capacity: " + cap + " "+ e.getMessage());
             }
         }
 
@@ -260,7 +262,7 @@ public class Capstone_Braithwaite {
                 top--;
                 return temp;
             } catch (HistoryEmptyException e) {
-                System.out.println("Exception: Attempt to remove an empty stack! " + e.getMessage());
+                System.out.println("Exception: Attempt to remove an empty stack! Capacity: " + cap + " " + e.getMessage());
                 return null;
             }
         }
@@ -269,7 +271,7 @@ public class Capstone_Braithwaite {
             try {
                 return history[top];
             } catch (HistoryEmptyException e) {
-                System.out.println("Exception: Attempt to look at a NULL stack! " + e.getMessage());
+                System.out.println("Exception: Attempt to look at a NULL stack! Capacity: " + cap + " " + e.getMessage());
                 return null;
             }
         }
