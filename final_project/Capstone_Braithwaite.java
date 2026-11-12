@@ -1,6 +1,19 @@
 import java.util.*;
 
 public class Capstone_Braithwaite {
+    
+    class HistoryFullException extends RuntimeException{
+        public HistoryFullException(String mes){
+            super(mes);
+        }
+    }
+
+    class HistoryEmptyException extends RuntimeException{
+        public HistoryEmptyException(String mes){
+            super(mes);
+        }
+    }
+
     abstract class LibraryItem implements Comparable<LibraryItem>{
         String title;
         String isbn;
@@ -217,6 +230,48 @@ public class Capstone_Braithwaite {
             this.name = name;
             this.age = age;
             this.cardId = cardId;
+        }
+    }
+
+    // Bounded Checkout Stack
+
+    public class BoundedHistoryStack<T>{
+        private T[] history;
+        private int top;
+
+        @SuppressWarnings("unchecked")
+        public BoundedHistoryStack(int size){
+            this.history = (T[]) new Object[size];
+            top = -1;
+        }
+
+        public void push(T value){
+            try{
+                history[++top] = value;
+            }catch(HistoryFullException e){
+                System.out.println("Exception: Attempting to add to a stack that has reached maximum capacity: " + e.getMessage());
+            }
+        }
+
+        public T pop(){
+            try {
+                T temp = history[top];
+                history[top] = null;
+                top--;
+                return temp;
+            } catch (HistoryEmptyException e) {
+                System.out.println("Exception: Attempt to remove an empty stack! " + e.getMessage());
+                return null;
+            }
+        }
+
+        public T peek(){
+            try {
+                return history[top];
+            } catch (HistoryEmptyException e) {
+                System.out.println("Exception: Attempt to look at a NULL stack! " + e.getMessage());
+                return null;
+            }
         }
     }
 }
