@@ -4,13 +4,15 @@ public class Exercise24_06_Braithwaite {
         Comparator<E> comp;
         private ArrayList<E> backedList;
 
+// Main priority queue code
 
         public MyPriorityQueue(Comparator<E> comp){
             this.comp = comp;
             backedList = new ArrayList<>();
         };
 
-        
+//Finding left, right, and parent values.
+
         public static int parent(int i){
             return (i - 1) /2;
         }
@@ -22,6 +24,8 @@ public class Exercise24_06_Braithwaite {
         public static int rightChild(int i){
             return (2 * i) + 2;
         }
+
+// Move up code to sift up through the list, used after adding
 
         public void moveUp(){
             int i = backedList.size() - 1;
@@ -36,6 +40,8 @@ public class Exercise24_06_Braithwaite {
                 i = parent(i);
             }
         }
+
+//MoveDown to sift down through the list, used after removing
 
         public void moveDown(int i){
             int max = i;
@@ -53,10 +59,14 @@ public class Exercise24_06_Braithwaite {
             }
         }
 
+//Simple enqueue code, add object, swap
+
         public void enqueue(E object){
             backedList.add(object);
             moveUp();
         }
+
+//Dequeue more complicated, set temporary obj, remove said obj, then sift down and return temp obj, unless the queue is empty
 
         public E dequeue(){
             if(backedList.isEmpty()){
@@ -84,6 +94,9 @@ public class Exercise24_06_Braithwaite {
             return "[Completed]";
         }
     }
+
+    //Testing 
+
     public static void main(String[] args) {
         Comparator<String> comparative = Comparator.comparingInt(String::length).thenComparing(String.CASE_INSENSITIVE_ORDER);
         MyPriorityQueue<String> mnCityNames = new MyPriorityQueue<>(comparative);
