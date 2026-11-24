@@ -277,6 +277,8 @@ public class Capstone_Braithwaite {
         }
     }
 
+    // NODE //
+
     public class Node<E>{
         E element;
         Node<E> next;
@@ -285,6 +287,10 @@ public class Capstone_Braithwaite {
             this.element = e;
         }
     }
+
+    // NODE //
+
+    // Beginning of HoldQueue
 
     public class HoldQueue<Patron> implements Iterable<Patron>{
         private Node<Patron> head;
@@ -363,5 +369,6 @@ public class Capstone_Braithwaite {
         }
     }
 
+    // End of Hold Queue
 
 }
