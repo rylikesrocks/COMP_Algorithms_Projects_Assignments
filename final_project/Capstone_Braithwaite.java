@@ -276,4 +276,92 @@ public class Capstone_Braithwaite {
             }
         }
     }
+
+    public class Node<E>{
+        E element;
+        Node<E> next;
+
+        public Node(E e){
+            this.element = e;
+        }
+    }
+
+    public class HoldQueue<Patron> implements Iterable<Patron>{
+        private Node<Patron> head;
+        private Node<Patron> tail;
+        private int size;
+
+
+        public HoldQueue(){
+            this.head = null;
+            this.tail = null;
+
+            head.next = tail;
+        }
+
+        public void enqueue(Patron person){
+            Node<Patron> newPerson = new Node<>(person);
+            if(isEmpty()){
+                tail = newPerson;
+            }
+            newPerson.next = head;
+            head = newPerson;
+            size++;
+        }
+
+        public Patron dequeue(){
+            if(isEmpty()){
+                throw new NoSuchElementException("Cannot remove on an empty queue");
+            }
+            Patron temporary = head.element;
+            head = head.next;
+            size--;
+
+            if(head == null){
+                tail = null;
+            }
+            return temporary;
+        }
+
+        public Patron peek(){
+            if(isEmpty()){
+                throw new NoSuchElementException("Cannot peek on an Empty list");
+            }
+
+            return head.element;
+        }
+
+        public int size(){
+            return size;
+        }
+
+        public boolean isEmpty(){
+            return size == 0;
+        }
+
+        @Override
+        public Iterator<Patron> iterator(){
+            return new ListIterator();
+        }
+
+         public class ListIterator implements Iterator<Patron>{
+            Node<Patron> index = head;
+
+            @Override 
+            public boolean hasNext() {
+                return index != tail;
+            }
+
+            @Override
+            public Patron next(){
+                if (!hasNext()){
+                    throw new NoSuchElementException("next() has no next element in the List");
+                }
+                index = index.next;
+                return index.element;
+            }
+        }
+    }
+
+
 }
