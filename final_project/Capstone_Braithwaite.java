@@ -19,12 +19,14 @@ public class Capstone_Braithwaite {
         String isbn;
         int year;
         int checkoutCnt;
+        int loanPeriod;
 
         public LibraryItem(){
             title = null;
             isbn = null;
             year = -1;
             checkoutCnt = -1;
+            loanPeriod = -1;
         }
 
         public LibraryItem(String title, String isbn, int year, int checkoutCnt){
@@ -32,6 +34,7 @@ public class Capstone_Braithwaite {
             this.isbn = isbn;
             this.year = year;
             this.checkoutCnt = checkoutCnt;
+            this.loanPeriod = 0;
         }
 
         abstract int getLoanPeriodDays();
@@ -43,14 +46,12 @@ public class Capstone_Braithwaite {
     }
 
     public class Book extends LibraryItem implements Renewable{
-
-        int loanPeriod;
         boolean hardCover;
         Author author;
 
         public Book(String title, String isbn, Integer year, int checkoutCnt, boolean hardCover, String name, int birthYear){
             super(title, isbn, year, checkoutCnt);
-            loanPeriod = 14;
+            this.loanPeriod = 20;
             this.hardCover = hardCover;
             this.author = new Author(name, birthYear);
         }
@@ -114,13 +115,12 @@ public class Capstone_Braithwaite {
     }
 
     public class DVD extends LibraryItem{
-        int loanPeriod;
         String type;
         String publisher;
 
         public DVD(String title, String isbn, int year, int checkoutCnt, String type, String publisher){
             super(title, isbn, year, checkoutCnt);
-            this.loanPeriod = 15;
+            this.loanPeriod = 14;
             this.type = type;
             this.publisher = publisher;
         }
@@ -161,7 +161,6 @@ public class Capstone_Braithwaite {
     }
 
     public class AudioBook extends LibraryItem implements Renewable{
-        int loanPeriod;
         int lengthMinutes;
         String speaker;
 
@@ -370,5 +369,16 @@ public class Capstone_Braithwaite {
     }
 
     // End of Hold Queue
+
+    public static void main(String[] args) {
+        PriorityQueue<LibraryItem> ProcessingQueue = new PriorityQueue<>(Comparator.comparingInt(LibraryItem::getLoanPeriodDays));
+
+        Capstone_Braithwaite library = new Capstone_Braithwaite();
+
+
+        Capstone_Braithwaite.Book marysLamb = library.new Book("Mary's Little Lamb", "19E44621", 1982, 1, false, "Jimmy Buffet", 1963);
+        ProcessingQueue.offer(marysLamb);
+        ProcessingQueue.poll();
+    }
 
 }
